@@ -7,8 +7,9 @@ import requests
 def main(context):
     context.log("Function started processing request")
     try:
+        data = json.loads(context.req.body)
         # Extract the access token from the request parameters
-        access_token = context.req.query.get("access-token")
+        access_token = data.get("access-token")
         if not access_token:
             context.log("Missing access token parameter")
             return {
